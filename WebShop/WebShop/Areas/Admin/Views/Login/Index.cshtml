@@ -1,4 +1,4 @@
-﻿@model Data_Access.Model.Account
+﻿@model WebShop.Areas.Admin.Models.LoginModel
 
 @{
     Layout = null;
@@ -25,49 +25,35 @@
     <title>Đăng nhập</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand" href="#">Đăng nhập</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto pull-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng ký</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <main class="login-form">
         <div class="cotainer">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Đăng ký</div>
+
+                        <div class="card-header">Đăng nhập</div>
+                        @Html.ValidationSummary(false,"Nhập vào thông tin tài khoản để đăng nhập",new { @class = "alert alert-danger" })
                         <div class="card-body">
-                            <form action="" method="post">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">Tên đăng nhập</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @autofocus = "autofocus" })
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Mật khẩu</label>
                                     <div class="col-md-6">
-                                        <input type="password" id="password" class="form-control" name="password" required>
+                                        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @autofocus = "autofocus" })
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember"> Nhớ tài khoản
+                                                @Html.CheckBoxFor(x => x.RememberMe, new { })Nhớ tài khoản
                                             </label>
                                         </div>
                                     </div>
@@ -76,11 +62,16 @@
                                     <button type="submit" class="btn btn-primary">
                                         Đăng nhập
                                     </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Đăng ký
+                                    </button>
+                                </div>
+                                <div class="col-md-6 offset-md-4">
                                     <a href="#" class="btn btn-link">
                                         Quên mật khẩu?
                                     </a>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>

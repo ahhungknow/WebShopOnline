@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Data_Access.DA
 {
-    public class UserDA
+    public class CategoryDA
     {
         private WebModelDbContext Db;
-        private static UserDA _Instance;
-        public static UserDA Instance
+        private static CategoryDA _Instance;
+        public static CategoryDA Instance
         {
             get
             {
                 if (_Instance == null)
-                    _Instance = new UserDA();
+                    _Instance = new CategoryDA();
                 return _Instance;
             }
             private set
@@ -24,15 +24,19 @@ namespace Data_Access.DA
                 _Instance = value;
             }
         }
-        public UserDA()
+        public CategoryDA()
         {
             Db = new WebModelDbContext();
         }
-        public bool InsertUser(Account account)
+        public List<ProductCategory> GetCategoryList()
+        {
+            return Db.ProductCategory.ToList();
+        }
+        public bool InsertCategory(ProductCategory productCategory)
         {
             try
             {
-                Db.Account.Add(account);
+                Db.ProductCategory.Add(productCategory);
                 Db.SaveChanges();
                 return true;
             }
@@ -40,12 +44,6 @@ namespace Data_Access.DA
             {
                 return false;
             }
-        }
-        public bool Login(Account account)
-        {
-            if (Db.Account.Where(x => x.Id == account.Id && x.Password == account.Password).Count()>0)
-                return true;
-            return false;
         }
     }
 }

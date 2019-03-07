@@ -17,11 +17,11 @@ namespace Data_Access.Model
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
-        public long ParrentId { get; set; }
-
         public int? DisplayOrder { get; set; }
 
         [StringLength(250)]
         public string SeoTitle { get; set; }
+
+        public int? ParentId { get; set; }
     }
 }

@@ -10,3 +10,15 @@ E:\GitHub\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CoreCompileInputs.cac
 E:\GitHub\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CopyComplete
 E:\GitHub\WebShop\Data_Access\obj\Debug\Data_Access.dll
 E:\GitHub\WebShop\Data_Access\obj\Debug\Data_Access.pdb
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\Data_Access.dll.config
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\Data_Access.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\Data_Access.pdb
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\EntityFramework.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\EntityFramework.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.csprojAssemblyReference.cache
+E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CoreCompileInputs.cache
+E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CopyComplete
+E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.pdb
