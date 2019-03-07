@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop", "WebShop\WebShop.csproj", "{24A64296-B6A0-444B-8A3E-C5B1A2576335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Access", "Data_Access\Data_Access.csproj", "{CEC8266D-95B9-48EB-BA56-2493BC5FAFD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24A64296-B6A0-444B-8A3E-C5B1A2576335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A64296-B6A0-444B-8A3E-C5B1A2576335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A64296-B6A0-444B-8A3E-C5B1A2576335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A64296-B6A0-444B-8A3E-C5B1A2576335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC8266D-95B9-48EB-BA56-2493BC5FAFD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC8266D-95B9-48EB-BA56-2493BC5FAFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC8266D-95B9-48EB-BA56-2493BC5FAFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC8266D-95B9-48EB-BA56-2493BC5FAFD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {473C5C69-1ABA-4B4D-B5C2-F6B366ECEEDF}
+	EndGlobalSection
+EndGlobal
