@@ -172,3 +172,7 @@ E:\GitHub\WebShopOnline\WebShop\WebShop\obj\Debug\WebShop.csproj.CoreCompileInpu
 E:\GitHub\WebShopOnline\WebShop\WebShop\obj\Debug\WebShop.csproj.CopyComplete
 E:\GitHub\WebShopOnline\WebShop\WebShop\obj\Debug\WebShop.dll
 E:\GitHub\WebShopOnline\WebShop\WebShop\obj\Debug\WebShop.pdb
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.Mvc.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.xml
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.Mvc.xml

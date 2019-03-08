@@ -1,10 +1,11 @@
-﻿@model List<Data_Access.Model.ProductCategory>
-
+﻿@model PagedList.IPagedList<Data_Access.Model.ProductCategory>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@section header{Quản lý loại sản phẩm}
+@section header{Danh sách loại sản phẩm}
+@section search{Category}
 
 <!DOCTYPE html>
 
@@ -14,18 +15,17 @@
     <title>Quản lí</title>
 </head>
 <body>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <div class="container-fluid">
-        @Html.ActionLink("Thêm mới loại sản phẩm", "Create", "Category")
-        @if (TempData["AlertMessage"] != null)
-        {
-            <div id="AlertBox" class="alert @TempData["AlertType"] hide">
-                @TempData["AlertMessage"]
-            </div>
-        }
+        <div class="mb-3">
+            @Html.ActionLink("Thêm mới loại sản phẩm", "Create", "Category", new { @class = "btn btn-success" })
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </div>
         <!-- Page Heading -->
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -43,22 +43,33 @@
                                 <th>Vị trí hiển thị</th>
                                 <th>Tiêu đề SEO</th>
                                 <th>Thuộc loại</th>
+                                <th colspan="2">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         @foreach (var item in Model)
                         {
                             <tbody>
-                                <tr>
+                                <tr id="row_@item.Id">
                                     <td>@item.Id</td>
                                     <td>@item.Name</td>
                                     <td>@item.MetaTitle</td>
                                     <td>@item.DisplayOrder</td>
                                     <td>@item.SeoTitle</td>
                                     <td>@item.ParentId</td>
+                                    <td>@Html.ActionLink("Sửa", "Edit", new { item.Id })</td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { item.Id }, new AjaxOptions
+                                        {
+                                        Confirm = "Bạn có muốn xoá "+item.Name,
+                                        OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                        HttpMethod = "Delete"
+                                        })
+                                    </td>
                                 </tr>
                             </tbody>
                         }
                     </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { UlElementClasses = new[] { "pagination" }, LiElementClasses = new[] { "page-item" } })
                 </div>
             </div>
         </div>
