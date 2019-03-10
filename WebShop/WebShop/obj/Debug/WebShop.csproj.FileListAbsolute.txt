@@ -176,3 +176,15 @@ E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.dll
 E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.Mvc.dll
 E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.xml
 E:\GitHub\WebShopOnline\WebShop\WebShop\bin\PagedList.Mvc.xml
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\Boilerplate.Web.Mvc5.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\Boilerplate.Web.Mvc5.xml
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\ImageProcessor.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\Pri.LongPath.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\System.Net.Http.Extensions.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\System.Net.Http.Formatting.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\System.Net.Http.Primitives.dll
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\ImageProcessor.xml
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\CKFinder.pdb
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\CKFinder_FileEditor.pdb
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\CKFinder_ImageResize.pdb
+E:\GitHub\WebShopOnline\WebShop\WebShop\bin\CKFinder_Watermark.pdb

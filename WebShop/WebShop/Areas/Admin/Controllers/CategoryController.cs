@@ -14,16 +14,17 @@ namespace WebShop.Areas.Admin.Controllers
     {
         // GET: Admin/Category
         [HttpGet]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page,string searchString)
         {
-            if (page == null || page<=0)
+            ViewBag.SearchString = searchString;
+            if (page == null || page <= 0)
             {
-                var model = CategoryDA.Instance.GetCategoryList().ToPagedList(1, CommonConst.Page_Size);
+                var model = CategoryDA.Instance.GetCategoryList(searchString).ToPagedList(1, CommonConst.Page_Size);
                 return View(model);
             }
             else
             {
-                var model = CategoryDA.Instance.GetCategoryList().ToPagedList((int)page, CommonConst.Page_Size);
+                var model = CategoryDA.Instance.GetCategoryList(searchString).ToPagedList((int)page, CommonConst.Page_Size);
                 return View(model);
             }
         }

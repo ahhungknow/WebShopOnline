@@ -69,11 +69,11 @@
                             </tbody>
                         }
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { UlElementClasses = new[] { "pagination" }, LiElementClasses = new[] { "page-item" } })
+                    <!--Pagination-->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page,@searchString=ViewBag.SearchString }), new PagedListRenderOptions { UlElementClasses = new[] { "pagination" }, LiElementClasses = new[] { "page-item" } })
                 </div>
             </div>
         </div>
-        <!--Pagination-->
     </div>
 </body>
 </html>

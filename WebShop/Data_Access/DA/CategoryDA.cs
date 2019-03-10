@@ -28,9 +28,16 @@ namespace Data_Access.DA
         {
             Db = new WebModelDbContext();
         }
-        public IEnumerable<ProductCategory> GetCategoryList()
+        public IEnumerable<ProductCategory> GetCategoryList(string searchString=null)
         {
-            return Db.ProductCategory.OrderByDescending(x=>x.DisplayOrder);
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return Db.ProductCategory.OrderBy(x => x.Id);
+            }
+            else
+            {
+                return Db.ProductCategory.Where(x => x.Id.ToString().Contains(searchString) || x.Name.Contains(searchString)).OrderBy(x=>x.Id);
+            }
         }
         public bool InsertCategory(ProductCategory productCategory)
         {
