@@ -1,1 +1,83 @@
-﻿
+﻿@model PagedList.IPagedList<Data_Access.Model.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{Danh sách sản phẩm}
+@section search{Product}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản lí</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="mb-3">
+            @Html.ActionLink("Thêm mới sản phẩm", "Create", "Product", new { @class = "btn btn-success" })
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </div>
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tiêu đề Meta</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng còn</th>
+                                <th>Bảo hành</th>
+                                <th>Ảnh</th>
+                                <th colspan="2">Chỉnh sửa</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr id="row_@item.Id">
+                                    <td>@item.Id</td>
+                                    <td>@item.MetaTitle</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Waranty</td>
+                                    <td><img src="@item.Image" height="50px" width="50px" alt="Error! @item.Image" /></td>
+                                    <td>@Html.ActionLink("Sửa", "Edit", new { item.Id })</td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { item.Id }, new AjaxOptions
+                                        {
+                                            Confirm = "Bạn có muốn xoá "+item.Name,
+                                            OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                            HttpMethod = "Delete"
+                                        })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                    <!--Pagination-->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

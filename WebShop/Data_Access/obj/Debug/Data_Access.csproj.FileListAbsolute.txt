@@ -22,3 +22,14 @@ E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CoreCom
 E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.csproj.CopyComplete
 E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.dll
 E:\GitHub\WebShopOnline\WebShop\Data_Access\obj\Debug\Data_Access.pdb
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.Mvc.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.Razor.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.Razor.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.Mvc.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.Razor.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.Razor.xml
+E:\GitHub\WebShopOnline\WebShop\Data_Access\bin\Debug\System.Web.WebPages.Deployment.xml

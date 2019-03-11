@@ -52,9 +52,9 @@ namespace Data_Access.DA
                 return false;
             }
         }
-        public ProductCategory GetById(int Id)
+        public ProductCategory GetById(int id)
         {
-            return Db.ProductCategory.Find(Id);
+            return Db.ProductCategory.Find(id);
         }
         public bool UpdateCategory(ProductCategory productCategory)
         {
@@ -74,11 +74,11 @@ namespace Data_Access.DA
                 return false;
             }
         }
-        public bool DeleteCategory(int Id)
+        public bool DeleteCategory(int id)
         {
             try
             {
-                ProductCategory productCategory = Db.ProductCategory.Find(Id);
+                ProductCategory productCategory = Db.ProductCategory.Find(id);
                 Db.ProductCategory.Remove(productCategory);
                 Db.SaveChanges();
                 return true;

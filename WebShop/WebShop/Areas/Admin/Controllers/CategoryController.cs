@@ -74,11 +74,11 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int Id)
+        public ActionResult Delete(int id)
         {
             if(ModelState.IsValid)
             {
-                if(CategoryDA.Instance.DeleteCategory(Id))
+                if(CategoryDA.Instance.DeleteCategory(id))
                 {
                     return View();
                 }

@@ -60,9 +60,9 @@
                                     <td>
                                         @Ajax.ActionLink("Xoá", "Delete", new { item.Id }, new AjaxOptions
                                         {
-                                        Confirm = "Bạn có muốn xoá "+item.Name,
-                                        OnComplete = "$('#row_" + @item.Id + "').remove()",
-                                        HttpMethod = "Delete"
+                                            Confirm = "Bạn có muốn xoá "+item.Name,
+                                            OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                            HttpMethod = "Delete"
                                         })
                                     </td>
                                 </tr>
@@ -70,7 +70,7 @@
                         }
                     </table>
                     <!--Pagination-->
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page,@searchString=ViewBag.SearchString }), new PagedListRenderOptions { UlElementClasses = new[] { "pagination" }, LiElementClasses = new[] { "page-item" } })
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page,@searchString=ViewBag.SearchString }))
                 </div>
             </div>
         </div>

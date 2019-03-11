@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Product")]
     public partial class Product
@@ -15,7 +16,7 @@
         [StringLength(250)]
         [Required(ErrorMessage ="Không được bỏ trống trường này!!")]
         public string MetaTitle { get; set; }
-
+            
         [StringLength(250)]
         [Required(ErrorMessage = "Không được bỏ trống trường này!!")]
         [DisplayName("Tên sản phẩm")]
@@ -24,9 +25,10 @@
         [StringLength(500)]
         [Required(ErrorMessage = "Không được bỏ trống trường này!!")]
         [DisplayName("Mô tả sản phẩm")]
+        [AllowHtml]
         public string Description { get; set; }
-
         [StringLength(250)]
+
         [Required(ErrorMessage = "Không được bỏ trống trường này!!")]
         [DisplayName("Ảnh")]
         public string Image { get; set; }

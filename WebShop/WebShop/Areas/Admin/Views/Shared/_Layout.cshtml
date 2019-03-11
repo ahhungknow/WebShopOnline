@@ -29,19 +29,20 @@
             <i class="fas fa-bars"></i>
         </button>
         <!-- Navbar Search -->
-        @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { @class = "d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" }))
+        @{string searchController = RenderSection("search").ToString();}
+        @using (Html.BeginForm("Index", searchController, FormMethod.Get, new { @class = "d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" }))
         {
-            <div class="input-group">
-                @if (RenderSection("search").ToHtmlString() == "Category")
-                {
-                    <input type="text" class="form-control" name="searchString" value="@ViewBag.SearchString" placeholder="Nhập vào mã hoặc tên loại">
+            if (!String.IsNullOrEmpty(searchController))
+            {
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchString" value="@ViewBag.SearchString" placeholder="Nhập vào mã hoặc tên">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                }
-            </div>
+                </div>
+            }
         }
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
@@ -133,11 +134,12 @@
     <!-- Bootstrap core JavaScript-->
     <script src="~/Areas/Assets/vendor/jquery/jquery.min.js"></script>
     <script src="~/Areas/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="~/Plugins/ckeditor/ckeditor.js"></script>
     <script src="~/Plugins/ckfinder/ckfinder.js"></script>
     <script src="~/Areas/Assets/js/sb-admin.min.js"></script>
-    @RenderSection("jsFooter",false)
+    @RenderSection("jsFooter", false)
 </body>
 </html>
 
