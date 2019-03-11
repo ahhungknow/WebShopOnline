@@ -51,10 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DA\CategoryDA.cs" />
+    <Compile Include="DA\ProductDA.cs" />
     <Compile Include="DA\UserDA.cs" />
     <Compile Include="Model\About.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Banner.cs" />
+    <Compile Include="Model\Bill.cs" />
+    <Compile Include="Model\BillInfo.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\FeedBack.cs" />
     <Compile Include="Model\Footer.cs" />

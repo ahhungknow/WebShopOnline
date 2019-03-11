@@ -12,7 +12,7 @@
     {
         [DisplayName("Mã loại")]
         public long Id { get; set; }
-        [Required(ErrorMessage ="Không được bỏ trống trường này")]
+        [Required(ErrorMessage = "Không được bỏ trống trường này")]
         [DisplayName("Tên loại")]
         [StringLength(250)]
         public string Name { get; set; }

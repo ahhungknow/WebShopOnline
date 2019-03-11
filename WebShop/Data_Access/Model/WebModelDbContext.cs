@@ -15,6 +15,8 @@ namespace Data_Access.Model
         public virtual DbSet<About> About { get; set; }
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<Banner> Banner { get; set; }
+        public virtual DbSet<Bill> Bill { get; set; }
+        public virtual DbSet<BillInfo> BillInfo { get; set; }
         public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<FeedBack> FeedBack { get; set; }
         public virtual DbSet<Footer> Footer { get; set; }
