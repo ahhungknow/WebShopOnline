@@ -35,11 +35,22 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            SetViewBag();
-            var model = ProductDA.Instance.GetById(id);
-            return View(model);
+            if (id == null)
+            {
+                return ToIndex();
+            }
+            else
+            {
+                var model = ProductDA.Instance.GetById((int)id);
+                if (model != null)
+                {
+                    SetViewBag();
+                    return View(model);
+                }
+                return ToIndex();
+            }
         }
         [HttpPost]
         public ActionResult Create(Product product)
@@ -48,7 +59,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(ProductDA.Instance.InsertProduct(product))
                 {
-                    return RedirectToAction("Index");
+                    return ToIndex(product.Id);
                 }
                 else
                 {
@@ -65,7 +76,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(ProductDA.Instance.EditProduct(product))
                 {
-                    return RedirectToAction("Index");
+                    return ToIndex(product.Id);
                 }
                 else
                 {
@@ -76,11 +87,11 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            if(ModelState.IsValid)
+            if(ModelState.IsValid || id!=null)
             {
-                if(ProductDA.Instance.DeleteProduct(id))
+                if(ProductDA.Instance.DeleteProduct((int)id))
                 {
                     return View();
                 }
@@ -95,6 +106,35 @@ namespace WebShop.Areas.Admin.Controllers
         {
             var categoryList = CategoryDA.Instance.GetCategoryList();
             ViewBag.CategoryId = new SelectList(categoryList, "Id","Name","Id");
+        }
+        public ViewResult ToIndex(int? id=null)
+        {
+            int i = 1,page=1;
+            if (id != null)
+            {
+                var productList = ProductDA.Instance.GetProductList();
+                foreach(var item in productList)
+                {
+                    if(String.Equals(item.Id,id))
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                if (i > CommonConst.Page_Size)
+                {
+                    if (i % CommonConst.Page_Size == 0)
+                        page = i / CommonConst.Page_Size;
+                    else
+                        page = (i / CommonConst.Page_Size) + 1;
+                }
+                else
+                {
+                    page = 1;
+                }
+            }
+            var model = ProductDA.Instance.GetProductList().ToPagedList(page, CommonConst.Page_Size);
+            return View("Index", model);
         }
     }
 }

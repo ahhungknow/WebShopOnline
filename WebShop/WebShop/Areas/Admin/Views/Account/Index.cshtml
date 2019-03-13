@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<Data_Access.Model.Account>
+@using PagedList.Mvc;
+@using WebShop.Common;
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{Danh sách tài khoản}
+@section search{Account}
+@section jsFooter{
+    <script src="~/Areas/Assets/js/controller/accountController.js"></script>
+    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản lí</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="mb-3">
+            @Html.ActionLink("Thêm mới tài khoản", "Create", "Account", new { @class = "btn btn-success" })
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+        </div>
+        <!-- Page Heading -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách tài khoản</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tên đăng nhập</th>
+                                <th>Mật khẩu</th>
+                                <th>Họ và tên</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Quyền</th>
+                                <th>Trạng thái</th>
+                                <th colspan="2">Chỉnh sửa</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr id="row_@item.Id">
+                                    <td>@item.Id</td>
+                                    <td>@Encryptor.Decrypt(item.Password)</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Role</td>
+                                    <td><a href="#" class="btn-active" data-id="@item.Id">@((bool)item.Status? "Kích hoạt" : "Khóa")</a></td>
+                                    <td>@Html.ActionLink("Sửa", "Edit", new { item.Id })</td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { item.Id }, new AjaxOptions
+                                        {
+                                            Confirm = "Bạn có muốn xoá "+item.Name,
+                                            OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                            HttpMethod = "Delete"
+                                        })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                    <!--Pagination-->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

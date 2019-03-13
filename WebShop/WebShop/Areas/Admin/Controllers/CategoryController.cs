@@ -34,10 +34,21 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int? id)
         {
-            var model = CategoryDA.Instance.GetById(Id);
-            return View(model);
+            if (id == null)
+            {
+                return ToIndex();
+            }
+            else
+            {
+                var model = CategoryDA.Instance.GetById((int)id);
+                if (model != null)
+                {
+                    return View(model);
+                }
+            }
+            return ToIndex();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -47,7 +58,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if (CategoryDA.Instance.InsertCategory(productCategory))
                 {
-                    return RedirectToAction("Index", "Category");
+                    return ToIndex(productCategory.Id);
                 }
                 else
                 {
@@ -64,7 +75,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(CategoryDA.Instance.UpdateCategory(productCategory))
                 {
-                    return RedirectToAction("Index", "Category");
+                    return ToIndex(productCategory.Id);
                 }
                 else
                 {
@@ -88,6 +99,35 @@ namespace WebShop.Areas.Admin.Controllers
                 }
             }
             return View();
+        }
+        public ActionResult ToIndex(int? id=null)
+        {
+            int i = 1, page = 1;
+            if (id != null)
+            {
+                var categoryList = CategoryDA.Instance.GetCategoryList();
+                foreach (var item in categoryList)
+                {
+                    if (String.Equals(item.Id, id))
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                if (i > CommonConst.Page_Size)
+                {
+                    if (i % CommonConst.Page_Size == 0)
+                        page = i / CommonConst.Page_Size;
+                    else
+                        page = (i / CommonConst.Page_Size) + 1;
+                }
+                else
+                {
+                    page = 1;
+                }
+            }
+            var model = CategoryDA.Instance.GetCategoryList().ToPagedList(page, CommonConst.Page_Size);
+            return View("Index", model);
         }
     }
 }

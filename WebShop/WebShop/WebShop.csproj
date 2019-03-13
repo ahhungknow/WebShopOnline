@@ -202,6 +202,7 @@
   <ItemGroup>
     <Content Include="Areas\Assets\css\sb-admin.css" />
     <Content Include="Areas\Assets\css\sb-admin.min.css" />
+    <Content Include="Areas\Assets\js\controller\accountController.js" />
     <Content Include="Areas\Assets\js\sb-admin.js" />
     <Content Include="Areas\Assets\js\sb-admin.min.js" />
     <Content Include="Areas\Assets\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2998,6 +2999,9 @@
     <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3025,7 +3029,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Account\" />
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
   </ItemGroup>

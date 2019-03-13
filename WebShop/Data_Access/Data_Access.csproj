@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="DA\CategoryDA.cs" />
     <Compile Include="DA\ProductDA.cs" />
-    <Compile Include="DA\UserDA.cs" />
+    <Compile Include="DA\AccountDA.cs" />
     <Compile Include="Model\About.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Banner.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
     <Compile Include="Model\Slide.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\WebModelDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

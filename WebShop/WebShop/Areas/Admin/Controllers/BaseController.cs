@@ -12,14 +12,14 @@ namespace WebShop.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         // GET: Admin/Base
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            var session = Session[CommonConst.User_Session];
-            if (session == null)
-            {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login" , action = "Index", Area="Admin"}));
-            }
-            base.OnActionExecuting(filterContext);
-        }
+        //protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        //{
+        //    var session = Session[CommonConst.User_Session];
+        //    if (session == null)
+        //    {
+        //        //filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login" , action = "Index", Area="Admin"}));
+        //    }
+        //    base.OnActionExecuting(filterContext);
+        //}
     }
 }

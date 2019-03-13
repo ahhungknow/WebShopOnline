@@ -26,9 +26,9 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 Account account = new Account();
                 account.Id =user.UserName;
-                account.Password =Encryptor.MD5Hash(user.Password);
+                account.Password =Encryptor.EnCrypt(user.Password);
 
-                if (UserDA.Instance.Login(account))
+                if (AccountDA.Instance.Login(account))
                 {
                     Session.Add(CommonConst.User_Session, account.Id);
                     return RedirectToAction("Index", "Home");

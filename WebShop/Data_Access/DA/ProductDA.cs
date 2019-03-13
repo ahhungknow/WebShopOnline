@@ -36,7 +36,7 @@ namespace Data_Access.DA
             }
             else
             {
-                return Db.Product.Where(x => x.Id.ToString() == searchString || x.Name == searchString).OrderBy(x=>x.Id);
+                return Db.Product.Where(x => x.Id.ToString().Contains(searchString) || x.Name.Contains(searchString)).OrderBy(x=>x.Id);
             }
         }
         public bool InsertProduct(Product product)
