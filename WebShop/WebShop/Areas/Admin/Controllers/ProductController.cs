@@ -59,6 +59,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(ProductDA.Instance.InsertProduct(product))
                 {
+                    SetAlert("Đã thêm sản phẩm mới", 0);
                     return ToIndex(product.Id);
                 }
                 else
@@ -76,6 +77,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(ProductDA.Instance.EditProduct(product))
                 {
+                    SetAlert("Đã sửa thông tin sản phẩm " + product.Name, 0);
                     return ToIndex(product.Id);
                 }
                 else
@@ -87,20 +89,19 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int? id)
+        public void Delete(int? id)
         {
             if(ModelState.IsValid || id!=null)
             {
                 if(ProductDA.Instance.DeleteProduct((int)id))
                 {
-                    return View();
+                    SetAlert("Đã xóa sản phẩm !!", 1);
                 }
                 else
                 {
-                    ModelState.AddModelError("Lỗi!", "Xóa không thành công!!");
+                    SetAlert("Xóa sản phẩm thất bại!!", 2);
                 }
             }
-            return View();
         }
         public void SetViewBag()
         {

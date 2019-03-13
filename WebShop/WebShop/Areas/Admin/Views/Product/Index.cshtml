@@ -19,12 +19,6 @@
     <div class="container-fluid">
         <div class="mb-3">
             @Html.ActionLink("Thêm mới sản phẩm", "Create", "Product", new { @class = "btn btn-success" })
-            @if (TempData["AlertMessage"] != null)
-            {
-                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
-                    @TempData["AlertMessage"]
-                </div>
-            }
         </div>
         <!-- Page Heading -->
         <!-- DataTales Example -->
@@ -64,7 +58,7 @@
                                         {
                                             Confirm = "Bạn có muốn xoá "+item.Name,
                                             OnComplete = "$('#row_" + @item.Id + "').remove()",
-                                            HttpMethod = "Delete"
+                                            HttpMethod = "Delete",
                                         })
                                     </td>
                                 </tr>

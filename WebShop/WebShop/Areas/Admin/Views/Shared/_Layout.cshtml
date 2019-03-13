@@ -24,7 +24,7 @@
 </head>
 <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-        <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand mr-1" href="index.html">Trang quản trị</a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
@@ -93,6 +93,12 @@
                         <h1 class="page-header">@RenderSection("header", true)</h1>
                     </div>
                 </div>
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
                 <!-- Breadcrumbs-->
                 @RenderBody()
             </div>
@@ -139,6 +145,7 @@
     <script src="~/Plugins/ckeditor/ckeditor.js"></script>
     <script src="~/Plugins/ckfinder/ckfinder.js"></script>
     <script src="~/Areas/Assets/js/sb-admin.min.js"></script>
+    <script src="~/Areas/Assets/js/admin.js"></script>
     @RenderSection("jsFooter", false)
 </body>
 </html>

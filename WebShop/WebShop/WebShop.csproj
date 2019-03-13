@@ -202,6 +202,7 @@
   <ItemGroup>
     <Content Include="Areas\Assets\css\sb-admin.css" />
     <Content Include="Areas\Assets\css\sb-admin.min.css" />
+    <Content Include="Areas\Assets\js\admin.js" />
     <Content Include="Areas\Assets\js\controller\accountController.js" />
     <Content Include="Areas\Assets\js\sb-admin.js" />
     <Content Include="Areas\Assets\js\sb-admin.min.js" />

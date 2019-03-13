@@ -5,6 +5,7 @@ namespace Data_Access.Model
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Product")]
     public partial class Product
@@ -18,6 +19,7 @@ namespace Data_Access.Model
         public string Name { get; set; }
 
         [StringLength(500)]
+        [AllowHtml]
         public string Description { get; set; }
 
         [StringLength(250)]
