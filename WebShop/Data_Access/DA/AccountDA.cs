@@ -76,7 +76,7 @@ namespace Data_Access.DA
                 return false;
             }
         }
-        public bool DeleteAccount(int id)
+        public bool DeleteAccount(string id)
         {
             try
             {

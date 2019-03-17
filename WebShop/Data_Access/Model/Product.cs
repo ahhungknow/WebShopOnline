@@ -13,8 +13,9 @@ namespace Data_Access.Model
         public int Id { get; set; }
 
         [StringLength(250)]
+        [Required]
         public string MetaTitle { get; set; }
-
+        [Required]
         [StringLength(250)]
         public string Name { get; set; }
 
@@ -37,6 +38,7 @@ namespace Data_Access.Model
         public int? Waranty { get; set; }
 
         [StringLength(10)]
+        [Required]
         public string Code { get; set; }
 
         public int? Status { get; set; }

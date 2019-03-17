@@ -19,12 +19,6 @@
     <div class="container-fluid">
         <div class="mb-3">
             @Html.ActionLink("Thêm mới loại sản phẩm", "Create", "Category", new { @class = "btn btn-success" })
-            @if (TempData["AlertMessage"] != null)
-            {
-                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
-                    @TempData["AlertMessage"]
-                </div>
-            }
         </div>
         <!-- Page Heading -->
         <!-- DataTales Example -->

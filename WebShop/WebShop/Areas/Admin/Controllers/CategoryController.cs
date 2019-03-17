@@ -10,7 +10,7 @@ using WebShop.Common;
 
 namespace WebShop.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         // GET: Admin/Category
         [HttpGet]
@@ -58,12 +58,13 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if (CategoryDA.Instance.InsertCategory(productCategory))
                 {
+                    SetAlert("Thêm mới loại sản phẩm thành công", 0);
                     return ToIndex(productCategory.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm mới không thành công!!");
-                }
+            }
+            else
+            {
+                SetAlert("Thêm loại sản phẩm mới thất bại", 2);
             }
             return View();
         }
@@ -75,32 +76,29 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if(CategoryDA.Instance.UpdateCategory(productCategory))
                 {
+                    SetAlert("Sửa thông tin loại sản phẩm thành công", 0);
                     return ToIndex(productCategory.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại!!");
-                }
+            }
+            else
+            {
+                SetAlert("Sửa thông tin loại sản phẩm thất bại", 2);
             }
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public void Delete(int id)
         {
-            if(ModelState.IsValid)
+            if (CategoryDA.Instance.DeleteCategory(id))
             {
-                if(CategoryDA.Instance.DeleteCategory(id))
-                {
-                    return View();
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Xóa không thành công!!");
-                }
+                SetAlert("Đã xóa loại sản phẩm " + CategoryDA.Instance.GetById(id).Name, 1);
             }
-            return View();
+            else
+            {
+                ModelState.AddModelError("", "Xóa không thành công!!");
+            }
         }
-        public ActionResult ToIndex(int? id=null)
+        public ViewResult ToIndex(int? id=null)
         {
             int i = 1, page = 1;
             if (id != null)

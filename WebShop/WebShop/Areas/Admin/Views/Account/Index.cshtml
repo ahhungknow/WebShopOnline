@@ -21,12 +21,6 @@
     <div class="container-fluid">
         <div class="mb-3">
             @Html.ActionLink("Thêm mới tài khoản", "Create", "Account", new { @class = "btn btn-success" })
-            @if (TempData["AlertMessage"] != null)
-            {
-                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
-                    @TempData["AlertMessage"]
-                </div>
-            }
         </div>
         <!-- Page Heading -->
         <!-- DataTales Example -->
@@ -65,11 +59,11 @@
                                     <td>@Html.ActionLink("Sửa", "Edit", new { item.Id })</td>
                                     <td>
                                         @Ajax.ActionLink("Xoá", "Delete", new { item.Id }, new AjaxOptions
-                                        {
-                                            Confirm = "Bạn có muốn xoá "+item.Name,
-                                            OnComplete = "$('#row_" + @item.Id + "').remove()",
-                                            HttpMethod = "Delete"
-                                        })
+                                       {
+                                           Confirm = "Bạn có muốn xoá " + item.Name,
+                                           OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
                                     </td>
                                 </tr>
                             </tbody>

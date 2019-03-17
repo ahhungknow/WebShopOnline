@@ -14,7 +14,7 @@ namespace WebShop.Areas.Admin.Controllers
     {
         // GET: Admin/Account
         [HttpGet]
-        public ActionResult Index(int? page, string searchString = null)
+        public ViewResult Index(int? page, string searchString = null)
         {
             if (page == null || page < 0)
             {
@@ -28,12 +28,12 @@ namespace WebShop.Areas.Admin.Controllers
             }
         }
         [HttpGet]
-        public ActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ViewResult Edit(string id)
         {
             if (String.IsNullOrEmpty(id))
             {
@@ -51,56 +51,57 @@ namespace WebShop.Areas.Admin.Controllers
             return ToIndex();
         }
         [HttpPost]
-        public ActionResult Create(Account account)
+        public ViewResult Create(Account account)
         {
             account.Password = Encryptor.EnCrypt(account.Password);
             if(ModelState.IsValid)
             {
                 if(AccountDA.Instance.InsertAccount(account))
                 {
+                    SetAlert("Thêm mới tài khoản thành công", 0);
                     return ToIndex(account.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("Lỗi", "Thêm mới thất bại!!");
-                }
+            }
+            else
+            {
+                SetAlert("Thêm mới tài khoản thất bại", 2);
             }
             return View();
         }
         [HttpPost]
-        public ActionResult Edit(Account account)
+        public ViewResult Edit(Account account)
         {
             account.Password = Encryptor.EnCrypt(account.Password);
             if (ModelState.IsValid)
             {
                 if(AccountDA.Instance.EditAccount(account))
                 {
-                    ToIndex(account.Id);
+                    SetAlert("Sửa thông tin tài khoản thành công", 0);
+                    return ToIndex(account.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("Lỗi!", "Sửa thông tin thất bại!!");
-                }
+            }
+            else
+            {
+                SetAlert("Sửa thông tin tài khoản thất bại", 2);
             }
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int? id)
+        public void Delete(string id)
         {
-            if (ModelState.IsValid)
+            if (id != null)
             {
-                if (id != null)
+                if (AccountDA.Instance.DeleteAccount(id))
                 {
-                    AccountDA.Instance.DeleteAccount((int)id);
-                }
-                else
-                {
-                    ModelState.AddModelError("Lỗi!", "Xóa thất bại!!");
+                    SetAlert("Đã xóa tài khoản ", 1);
                 }
             }
-            return View();
+            else
+            {
+                SetAlert("Xóa không thành công", 2);
+            }
         }
-        public ActionResult ToIndex(string id=null)
+        public ViewResult ToIndex(string id=null)
         {
             int i = 1, page = 1;
             if (id != null)

@@ -62,10 +62,10 @@ namespace WebShop.Areas.Admin.Controllers
                     SetAlert("Đã thêm sản phẩm mới", 0);
                     return ToIndex(product.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("Lỗi!", "Thêm mới thất bại!!");
-                }
+            }
+            else
+            {
+                SetAlert("Thêm sản phẩm mới thất bại", 2);
             }
             SetViewBag();
             return View();
@@ -80,10 +80,10 @@ namespace WebShop.Areas.Admin.Controllers
                     SetAlert("Đã sửa thông tin sản phẩm " + product.Name, 0);
                     return ToIndex(product.Id);
                 }
-                else
-                {
-                    ModelState.AddModelError("Lỗi!", "Sửa thông tin thất bại!!");
-                }
+            }
+            else
+            {
+                SetAlert("Sửa thông tin thất bại", 2);
             }
             SetViewBag();
             return View();
@@ -91,9 +91,9 @@ namespace WebShop.Areas.Admin.Controllers
         [HttpDelete]
         public void Delete(int? id)
         {
-            if(ModelState.IsValid || id!=null)
+            if (id != null)
             {
-                if(ProductDA.Instance.DeleteProduct((int)id))
+                if (ProductDA.Instance.DeleteProduct((int)id))
                 {
                     SetAlert("Đã xóa sản phẩm !!", 1);
                 }
